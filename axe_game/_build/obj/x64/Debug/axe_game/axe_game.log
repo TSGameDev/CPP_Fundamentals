@@ -1,3 +1,3 @@
 ﻿  axe_game.cpp
-D:\C++ Fundamentals Project\axe_game\_build\axe_game.cpp(28,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\axe_game\_build\axe_game.cpp(52,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   axe_game.vcxproj -> D:\C++ Fundamentals Project\axe_game\_bin\Debug\axe_game.exe
