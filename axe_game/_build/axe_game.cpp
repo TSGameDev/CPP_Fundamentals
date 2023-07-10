@@ -19,10 +19,10 @@ int main()
 
 		DrawCircle(circle_x, circle_y, circleRadius, RED);
 
-		if (IsKeyDown(KEY_W)) circle_y -= 1;
-		if (IsKeyDown(KEY_S)) circle_y += 1;
-		if (IsKeyDown(KEY_A)) circle_x -= 1;
-		if (IsKeyDown(KEY_D)) circle_x += 1;
+		if (IsKeyDown(KEY_W) && circle_y > (0+circleRadius)) circle_y -= 1;
+		if (IsKeyDown(KEY_S) && circle_y < (screenHeight - circleRadius)) circle_y += 1;
+		if (IsKeyDown(KEY_A) && circle_x > (0 + circleRadius)) circle_x -= 1;
+		if (IsKeyDown(KEY_D) && circle_x < (screenWidth-circleRadius)) circle_x += 1;
 
 		EndDrawing();
 	}
