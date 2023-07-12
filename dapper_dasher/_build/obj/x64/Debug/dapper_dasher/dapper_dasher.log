@@ -1,4 +1,7 @@
 ﻿  DapperDasher.cpp
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(17,38): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(18,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(15,48): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(21,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(22,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(58,32): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(78,22): warning C4553: '==': result of expression not used; did you intend '='?
   dapper_dasher.vcxproj -> D:\C++ Fundamentals Project\dapper_dasher\_bin\Debug\dapper_dasher.exe
