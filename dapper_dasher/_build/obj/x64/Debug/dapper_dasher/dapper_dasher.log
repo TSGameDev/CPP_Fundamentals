@@ -1,2 +1,4 @@
 ﻿  DapperDasher.cpp
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(17,38): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(18,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   dapper_dasher.vcxproj -> D:\C++ Fundamentals Project\dapper_dasher\_bin\Debug\dapper_dasher.exe

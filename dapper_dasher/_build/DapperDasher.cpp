@@ -12,14 +12,19 @@ int main()
 	int const GRAVITY = 1;
 
 	//Player Values
-	int player_YPos = WINDOW_HEIGHT - 100;
-	int player_VelocityY = 0;
+	Texture2D scarfy = LoadTexture("textures/scarfy.png");
+	Rectangle scarfyAnimRect;
+	scarfyAnimRect.width = scarfy.width / 6;
+	scarfyAnimRect.height = scarfy.height;
+	scarfyAnimRect.x = 0;
+	scarfyAnimRect.y = 0;
+	Vector2 scarfyPos;
+	scarfyPos.x = WINDOW_WIDTH / 2 - scarfyAnimRect.width / 2;
+	scarfyPos.y = WINDOW_HEIGHT - scarfyAnimRect.height;
+
+	int scarfy_VelocityY = 0;
 
 	bool playerIsGrounded = false;
-
-	//Temporary Player Values
-	int squreWidth = 50;
-	int squreHeight = 80;
 
 
 	SetTargetFPS(60);
@@ -29,33 +34,34 @@ int main()
 		ClearBackground(WHITE);
 
 		//If player is grounded, set bool true, set velocity 0 and correctly position player
-		if (player_YPos >= WINDOW_HEIGHT - squreHeight)
+		if (scarfyPos.y >= WINDOW_HEIGHT - scarfyAnimRect.height)
 		{
 			playerIsGrounded = true;
-			player_VelocityY = 0;
-			player_YPos = WINDOW_HEIGHT - squreHeight;
+			scarfy_VelocityY = 0;
+			scarfyPos.y = WINDOW_HEIGHT - scarfyAnimRect.height;
 		}
 		//Else set bool false, add gravity each frame
 		else
 		{
 			playerIsGrounded = false;
-			player_VelocityY += GRAVITY;
+			scarfy_VelocityY += GRAVITY;
 		}
 
 		//Jump check, needs to be grounded and space key press
 		if (IsKeyPressed(KEY_SPACE) && playerIsGrounded)
 		{
-			player_VelocityY += JUMPFORCE;
+			scarfy_VelocityY += JUMPFORCE;
 			playerIsGrounded = false;
 		}
 
 		//Update player Y POS with Y Velocity
-		player_YPos += player_VelocityY;
+		scarfyPos.y += scarfy_VelocityY;
 
 		//Display Temporary Player
-		DrawRectangle(WINDOW_WIDTH / 2, player_YPos, squreWidth, squreHeight, BLUE);
+		DrawTextureRec(scarfy, scarfyAnimRect, scarfyPos, WHITE);
 
 		EndDrawing();
 	}
+	UnloadTexture(scarfy);
 	CloseWindow();
 }
