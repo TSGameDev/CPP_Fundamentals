@@ -1,23 +1,9 @@
 ﻿  DapperDasher.cpp
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(30,33): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(30,33): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(30,52): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(30,52): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(31,28): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(31,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(31,51): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(31,51): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(35,5): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(38,33): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(38,33): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(38,52): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(38,52): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(39,30): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(39,30): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(39,57): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(39,57): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(53,41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(54,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(60,39): warning C4305: '=': truncation from 'double' to 'float'
-D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(90,33): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(20,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(20,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(41,9): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(47,41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(48,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(54,39): warning C4305: '=': truncation from 'double' to 'float'
+D:\C++ Fundamentals Project\dapper_dasher\_build\DapperDasher.cpp(84,33): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
   dapper_dasher.vcxproj -> D:\C++ Fundamentals Project\dapper_dasher\_bin\Debug\dapper_dasher.exe
