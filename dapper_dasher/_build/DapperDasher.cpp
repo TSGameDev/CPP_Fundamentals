@@ -9,6 +9,47 @@ struct AnimData
     float runningTime;
 };
 
+bool isOnGround(AnimData data, int windowHeight)
+{
+    return data.pos.y >= windowHeight - data.rec.height;
+}
+
+AnimData UpdateAnimations(AnimData data, float DeltaTime, int frameMax)
+{
+    // update running time
+    data.runningTime += DeltaTime;
+    if (data.runningTime >= data.updateTime)
+    {
+        data.runningTime = 0.0;
+        // update animation frame
+        data.rec.x = data.frame * data.rec.width;
+        data.frame++;
+        if (data.frame > frameMax)
+        {
+            data.frame = 0;
+        }
+    }
+    return data;
+}
+
+float ScrollBackground(float Xvalue, Texture2D scrollingTexture, float scrollSpeed, float DeltaTime)
+{
+    Xvalue -= scrollSpeed * DeltaTime;
+    if (Xvalue <= -scrollingTexture.width * 2)
+    {
+        Xvalue = 0;
+    }
+    return Xvalue;
+}
+
+void DrawScrollingBackground(Texture2D scrollTexture, float scrollTextureX)
+{
+    Vector2 firstTexture{ scrollTextureX, 0.0 };
+    DrawTextureEx(scrollTexture, firstTexture, 0.0, 2.0, WHITE);
+    Vector2 secondTexture{ scrollTextureX + scrollTexture.width * 2, 0.0 };
+    DrawTextureEx(scrollTexture, secondTexture, 0.0, 2.0, WHITE);
+}
+
 int main()
 {
     // array with window dimensions
@@ -40,6 +81,7 @@ int main()
         0 // float runningTime
         };
     }
+    float finishLine = nebulae[sizeOfNebulae - 1].pos.x;
 
     // scarfy variables
     Texture2D scarfy = LoadTexture("textures/scarfy.png");
@@ -61,6 +103,18 @@ int main()
 
     int velocity{ 0 };
 
+    Texture2D farBackground = LoadTexture("textures/far-buildings.png");
+    float farBackgroundX{ 0 };
+    float farBackgroundScrollSpeed = 50;
+
+    Texture2D midBackground = LoadTexture("textures/back-buildings.png");
+    float midBackgroundX{ 0 };
+    float midBackgroundScrollSpeed = 100;
+
+    Texture2D closeBackground = LoadTexture("textures/foreground.png");
+    float closeBackgroundX{ 0 };
+    float closeBackgroundScrollSpeed = 150;
+
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
@@ -71,8 +125,16 @@ int main()
         BeginDrawing();
         ClearBackground(WHITE);
 
+        farBackgroundX = ScrollBackground(farBackgroundX, farBackground, dT, farBackgroundScrollSpeed);
+        midBackgroundX = ScrollBackground(midBackgroundX, midBackground, dT, midBackgroundScrollSpeed);
+        closeBackgroundX = ScrollBackground(closeBackgroundX, closeBackground, dT, closeBackgroundScrollSpeed);
+
+        DrawScrollingBackground(farBackground, farBackgroundX);
+        DrawScrollingBackground(midBackground, midBackgroundX);
+        DrawScrollingBackground(closeBackground, closeBackgroundX);
+
         // perform ground check
-        if (scarfyData.pos.y >= windowDimensions[1] - scarfyData.rec.height)
+        if (isOnGround(scarfyData, windowDimensions[1]))
         {
             // rectangle is on the ground
             velocity = 0;
@@ -96,42 +158,19 @@ int main()
             // update nebula position
             nebulae[i].pos.x += nebVel * dT;
         }
-
+        finishLine += nebVel * dT;
         // update scarfy position
         scarfyData.pos.y += velocity * dT;
 
         // update scarfy's animation frame
         if (!isInAir)
         {
-            // update running time
-            scarfyData.runningTime += dT;
-            if (scarfyData.runningTime >= scarfyData.updateTime)
-            {
-                scarfyData.runningTime = 0.0;
-                // update animation frame
-                scarfyData.rec.x = scarfyData.frame * scarfyData.rec.width;
-                scarfyData.frame++;
-                if (scarfyData.frame > 5)
-                {
-                    scarfyData.frame = 0;
-                }
-            }
+            scarfyData = UpdateAnimations(scarfyData, dT, 5);
         }
 
         for (int i = 0; i < sizeOfNebulae; i++)
         {
-            // update nebula animation frame
-            nebulae[i].runningTime += dT;
-            if (nebulae[i].runningTime >= nebulae[i].updateTime)
-            {
-                nebulae[i].runningTime = 0.0;
-                nebulae[i].rec.x = nebulae[i].frame * nebulae[i].rec.width;
-                nebulae[i].frame++;
-                if (nebulae[i].frame > 7)
-                {
-                    nebulae[i].frame = 0;
-                }
-            }
+            nebulae[i] = UpdateAnimations(nebulae[i], dT, 7);
         }
 
         for (int i = 0; i < sizeOfNebulae; i++)
