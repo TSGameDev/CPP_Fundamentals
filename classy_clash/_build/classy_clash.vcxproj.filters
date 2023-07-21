@@ -7,11 +7,15 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{E9C7FDCE-D52A-8D73-7EB0-C5296AF258F6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\classy_clash cource">
+      <UniqueIdentifier>{2c27f60b-08d9-45ea-a6a4-30ea22050a26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\game\src\screens.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\raylib_game.c">
@@ -32,5 +36,9 @@
     <ClCompile Include="..\game\src\screen_title.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp" />
   </ItemGroup>
 </Project>

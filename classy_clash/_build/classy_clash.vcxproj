@@ -260,6 +260,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\game\src\screens.h" />
+    <ClInclude Include="Character.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\raylib_game.c" />
@@ -268,6 +269,8 @@
     <ClCompile Include="..\game\src\screen_logo.c" />
     <ClCompile Include="..\game\src\screen_options.c" />
     <ClCompile Include="..\game\src\screen_title.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Character.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="raylib.vcxproj">
