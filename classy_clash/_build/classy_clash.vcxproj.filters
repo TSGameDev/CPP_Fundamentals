@@ -15,7 +15,12 @@
     <ClInclude Include="..\game\src\screens.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h" />
+    <ClInclude Include="Character.h">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClInclude>
+    <ClInclude Include="Prop.h">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\raylib_game.c">
@@ -39,6 +44,11 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files\classy_clash cource</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClCompile>
+    <ClCompile Include="Prop.cpp">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

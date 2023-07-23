@@ -1,2 +1,6 @@
-﻿  main.cpp
+﻿  Character.cpp
+D:\C++ Fundamentals Project\classy_clash\_build\Character.cpp(6,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Prop.cpp
+  main.cpp
+  Generating Code...
   classy_clash.vcxproj -> D:\C++ Fundamentals Project\classy_clash\_bin\Debug\classy_clash.exe

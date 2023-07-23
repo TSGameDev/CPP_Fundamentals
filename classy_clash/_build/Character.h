@@ -4,11 +4,13 @@
 class Character
 {
 public:
-	Character();
+	Character(int winWidth, int winHeight);
 	void Tick(float DELTA_TIME);
-	void setScreenPos(int winWidth, int winHeight);
+	void UndoMovement();
 
-	Vector2 getWorldPos() { return worldPos; }
+	Vector2 GetWorldPos() { return worldPos; }
+	Rectangle GetCollisionRect();
+
 private:
 	Texture2D currentTexture{ LoadTexture("characters/knight_idle_spritesheet.png") };
 	Texture2D idleTexture{ LoadTexture("characters/knight_idle_spritesheet.png") };
@@ -18,6 +20,7 @@ private:
 	Vector2 screenPos{};
 	//The position of the world map to represent character movement
 	Vector2 worldPos{};
+	Vector2 worldPosLastFrame{};
 
 	float faceDir{ 1.f };
 	float runningTime{};
@@ -25,6 +28,7 @@ private:
 	float height{};
 	float animUpdateTime{ 1.f / 12.f };
 	float speed{ 4.f };
+	float characterScale{4.0f};
 
 	int currentAnimFrame{};
 	int maxAnimFrames{ 6 };
