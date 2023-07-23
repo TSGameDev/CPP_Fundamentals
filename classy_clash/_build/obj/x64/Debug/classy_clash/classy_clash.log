@@ -1,6 +1,13 @@
-﻿  Character.cpp
-D:\C++ Fundamentals Project\classy_clash\_build\Character.cpp(6,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Prop.cpp
+﻿  BaseCharacter.cpp
+  Character.cpp
+D:\C++ Fundamentals Project\classy_clash\_build\Character.cpp(4,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\classy_clash\_build\Character.cpp(5,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\C++ Fundamentals Project\classy_clash\_build\Character.cpp(8,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Enemy.cpp
   main.cpp
+D:\C++ Fundamentals Project\classy_clash\_build\main.cpp(69,33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\C++ Fundamentals Project\classy_clash\_build\main.cpp(69,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\C++ Fundamentals Project\classy_clash\_build\main.cpp(78,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\C++ Fundamentals Project\classy_clash\_build\main.cpp(78,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Generating Code...
   classy_clash.vcxproj -> D:\C++ Fundamentals Project\classy_clash\_bin\Debug\classy_clash.exe

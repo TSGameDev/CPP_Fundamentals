@@ -1,5 +1,7 @@
 #include "Character.h"
+#include "Enemy.h"
 #include "Prop.h"
+#include <string>
 
 int main()
 {
@@ -24,6 +26,25 @@ int main()
 		Prop{LoadTexture("nature_tileset/Log.png"), Vector2{400.f, 500.f}}
 	};
 
+	Enemy goblin{
+		Vector2{800.f, 300.f},
+		LoadTexture("characters/goblin_idle_spritesheet.png"),
+		LoadTexture("characters/goblin_run_spritesheet.png") };
+
+	Enemy slime{
+		Vector2{500.f, 700.f},
+		LoadTexture("characters/slime_idle_spritesheet.png"),
+		LoadTexture("characters/slime_run_spritesheet.png") };
+
+	Enemy* enemies[]{
+		&goblin,
+		&slime };
+
+	for (auto enemy : enemies)
+	{
+		enemy->SetTarget(&knight);
+	}
+
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
 	{
@@ -42,9 +63,42 @@ int main()
 			prop.Render(knight.GetWorldPos());
 		}
 
+		if (!knight.GetIsAlive())
+		{
+			//Not Alive
+			DrawText("Game Over!", 55.f, 45.f, 40, RED);
+			EndDrawing();
+			continue;
+		}
+		else
+		{
+			//Alive
+			std::string knightsHealth = "Health: ";
+			knightsHealth.append(std::to_string(knight.GetHealth()), 0, 5);
+			DrawText(knightsHealth.c_str(), 55.f, 45.f, 40, RED);
+		}
+
 		//Update Player Character
 		knight.Tick(DELTA_TIME);
-		
+
+		for (Enemy* enemy : enemies)
+		{
+			//Update Enemies
+			enemy->Tick(DELTA_TIME);
+		}
+
+		//Check for player weapon collisions
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			for (Enemy* enemy : enemies)
+			{
+				if (CheckCollisionRecs(knight.GetWeaponCollisionRect(), enemy->GetCollisionRect()))
+				{
+					enemy -> SetIsAlive(false);
+				}
+			}
+		}
+
 		//Checking World Boundries
 		Vector2 knightWorldPos = knight.GetWorldPos();
 		if (knightWorldPos.x < 0.f ||

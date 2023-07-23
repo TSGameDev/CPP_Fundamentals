@@ -21,6 +21,12 @@
     <ClInclude Include="Prop.h">
       <Filter>Source Files\classy_clash cource</Filter>
     </ClInclude>
+    <ClInclude Include="BaseCharacter.h">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game\src\raylib_game.c">
@@ -48,6 +54,12 @@
       <Filter>Source Files\classy_clash cource</Filter>
     </ClCompile>
     <ClCompile Include="Prop.cpp">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCharacter.cpp">
+      <Filter>Source Files\classy_clash cource</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\classy_clash cource</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,69 +1,77 @@
 #include "Character.h"
 
-Character::Character(int winWidth, int winHeight)
+Character::Character(int winWidth, int winHeight) : 
+	windowWidth(winWidth),
+	windowHeight(winHeight)
 {
 	width = static_cast<float>(currentTexture.width) / maxAnimFrames;
 	height = currentTexture.height;
+}
 
-	screenPos =
+Vector2 Character::GetScreenPos()
+{
+	return Vector2
 	{
-		static_cast<float>(winWidth) / 2.0f - characterScale * (0.5f * width),
-		static_cast<float>(winHeight) / 2.0f - characterScale * (0.5f * height)
+		static_cast<float>(windowWidth) / 2.0f - characterScale * (0.5f * width),
+		static_cast<float>(windowHeight) / 2.0f - characterScale * (0.5f * height)
 	};
+}
+
+void Character::TakeDamage(float damage)
+{
+	health -= damage;
+	if (health <= 0.f)
+	{
+		SetIsAlive(false);
+	}
 }
 
 void Character::Tick(float DELTA_TIME)
 {
-	//Inputs
-	Vector2 dir = { 0,0 };
-	if (IsKeyDown(KEY_A)) dir.x -= 1.0f;
-	if (IsKeyDown(KEY_D)) dir.x += 1.0f;
-	if (IsKeyDown(KEY_W)) dir.y -= 1.0f;
-	if (IsKeyDown(KEY_S)) dir.y += 1.0f;
+	if (!GetIsAlive()) return;
 
-	//storing worldpos
-	worldPosLastFrame = worldPos;
+	if (IsKeyDown(KEY_A)) velocity.x -= 1.0f;
+	if (IsKeyDown(KEY_D)) velocity.x += 1.0f;
+	if (IsKeyDown(KEY_W)) velocity.y -= 1.0f;
+	if (IsKeyDown(KEY_S)) velocity.y += 1.0f;
 
-	//Move the map relative to the inverse of the direction inputs
-	if (Vector2Length(dir) != 0.0)
+	//Call Parent Tick
+	BaseCharacter::Tick(DELTA_TIME);
+
+	//Draw Weapon
+	Vector2 weaponOrigin{};
+	Vector2 weaponOffset{};
+	float WeaponRotation{};
+	if (faceDir > 0.f)
 	{
-		worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(dir), speed));
-		faceDir = static_cast<float>(dir.x) < 0.f ? -1.f : 1.f;
-		currentTexture = runTexture;
+		//facing right
+		weaponOrigin = {0.f, weapon.height * characterScale};
+		weaponOffset = {35.f, 55.f};
+		weaponCollisionRect =
+		{
+			GetScreenPos().x + weaponOffset.x,
+			GetScreenPos().y + weaponOffset.y - weapon.height * characterScale,
+			weapon.width * characterScale,
+			weapon.height * characterScale
+		};
+		WeaponRotation = IsMouseButtonDown(MOUSE_BUTTON_LEFT) ? 35.f : 0.f;
 	}
 	else
 	{
-		currentTexture = idleTexture;
+		//facing left
+		weaponOrigin = { weapon.width * characterScale, weapon.height * characterScale };
+		weaponOffset = { 25.f, 55.f };
+		weaponCollisionRect =
+		{
+			GetScreenPos().x + weaponOffset.x - weapon.width * characterScale,
+			GetScreenPos().y + weaponOffset.y - weapon.height * characterScale,
+			weapon.width * characterScale,
+			weapon.height * characterScale
+		};
+		WeaponRotation = IsMouseButtonDown(MOUSE_BUTTON_LEFT) ? -35.f : 0.f;
 	}
-
-	//Update Aniamtion
-	runningTime += DELTA_TIME;
-	if (runningTime >= animUpdateTime)
-	{
-		currentAnimFrame++;
-		runningTime = 0.0;
-		if (currentAnimFrame >= maxAnimFrames) currentAnimFrame = 0;
-	}
-
-	//Draw Player Textures with scale
-	Rectangle knightAnimFrame = { currentAnimFrame * width, 0.f, faceDir * width, height};
-	Rectangle knightDest = { screenPos.x, screenPos.y, width * characterScale, height * characterScale };
-	DrawTexturePro(currentTexture, knightAnimFrame, knightDest, Vector2{ 0.0f, 0.0f }, 0.0f, WHITE);
-
-}
-
-void Character::UndoMovement()
-{
-	worldPos = worldPosLastFrame;
-}
-
-Rectangle Character::GetCollisionRect()
-{
-	return Rectangle
-	{
-		screenPos.x,
-		screenPos.y,
-		width * characterScale,
-		height * characterScale
-	};
+	
+	Rectangle weaponSource{0.f, 0.f, static_cast<float>(weapon.width) * faceDir, static_cast<float>(weapon.height) };
+	Rectangle weaponDest{GetScreenPos().x + weaponOffset.x, GetScreenPos().y + weaponOffset.y, weapon.width * characterScale, weapon.height * characterScale};
+	DrawTexturePro(weapon, weaponSource, weaponDest, weaponOrigin, WeaponRotation, WHITE);
 }
